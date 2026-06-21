@@ -1,5 +1,5 @@
 <main class="page-shell">
-  <header class="site-header">
+  <header class="site-header" data-reveal>
     <div class="brand-wrap">
       <span class="brand-mark">M</span>
       <span class="brand-name">Moverbot</span>
@@ -12,7 +12,7 @@
     <a class="nav-cta" href="#contact">Book a Demo</a>
   </header>
 
-  <section class="hero" id="home">
+  <section class="hero" id="home" data-reveal>
     <div class="hero-content">
       <span class="eyebrow">MoverBot 2.0</span>
       <h1>You shouldn't be pushing lawn mowers in 2026.</h1>
@@ -49,7 +49,7 @@
     </div>
   </section>
 
-  <section class="about-section" id="about">
+  <section class="about-section" id="about" data-reveal>
     <div>
       <span class="section-tag">About</span>
       <h2>We built this because the old way was never good enough.</h2>
@@ -62,7 +62,7 @@
     </p>
   </section>
 
-  <section class="services-section" id="services">
+  <section class="services-section" id="services" data-reveal>
     <div class="section-heading">
       <span class="section-tag">Capabilities</span>
       <h2>Designed for real-world autonomy</h2>
@@ -78,7 +78,7 @@
     </div>
   </section>
 
-  <section class="tech-section" id="technology">
+  <section class="tech-section" id="technology" data-reveal>
     <div class="section-heading">
       <span class="section-tag">Technology</span>
       <h2>Intelligence under the hood</h2>
@@ -90,7 +90,7 @@
     </div>
   </section>
 
-  <section class="projects-section" id="projects">
+  <section class="projects-section" id="projects" data-reveal>
     <div class="section-heading">
       <span class="section-tag">Development</span>
       <h2>No vaporware. Just engineering.</h2>
@@ -106,18 +106,24 @@
     </div>
   </section>
 
-  <section class="stats-section">
+  <section class="stats-section" data-reveal>
     <div class="stats-grid">
       @for (stat of stats; track stat.label) {
         <div class="stat-item">
-          <strong>{{ stat.value }}</strong>
+          <strong
+            class="stat-value"
+            [attr.data-count]="stat.value"
+            [attr.data-suffix]="stat.suffix"
+            [attr.data-decimals]="stat.value % 1 === 0 ? 0 : 1"
+            data-counter
+          >0</strong>
           <span>{{ stat.label }}</span>
         </div>
       }
     </div>
   </section>
 
-  <section class="benefits-section">
+  <section class="benefits-section" data-reveal>
     <div class="section-heading">
       <span class="section-tag">Why Moverbot</span>
       <h2>Built for the standard that comes next</h2>
@@ -129,7 +135,7 @@
     </div>
   </section>
 
-  <section class="testimonials-section">
+  <section class="testimonials-section" data-reveal>
     <div class="section-heading">
       <span class="section-tag">Vision</span>
       <h2>What the future looks like</h2>
@@ -143,7 +149,7 @@
     </div>
   </section>
 
-  <section class="contact-section" id="contact">
+  <section class="contact-section" id="contact" data-reveal>
     <div>
       <span class="section-tag">Contact</span>
       <h2>Ready to rethink the yard?</h2>
@@ -162,7 +168,7 @@
   </section>
 </main>
 
-<footer class="site-footer">
+<footer class="site-footer" data-reveal>
   <p>© 2026 Moverbot. Autonomous robotics for a smarter future.</p>
 </footer>
 

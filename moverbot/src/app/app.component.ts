@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { AfterViewInit, Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 
 @Component({
@@ -8,7 +8,7 @@ import { RouterOutlet } from '@angular/router';
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
-export class AppComponent {
+export class AppComponent implements AfterViewInit {
   title = 'Moverbot';
 
   navItems = [
@@ -73,10 +73,10 @@ export class AppComponent {
   ];
 
   stats = [
-    { value: '50+', label: 'Projects Delivered' },
-    { value: '15+', label: 'Industry Partners' },
-    { value: '99.5%', label: 'System Reliability' },
-    { value: '24/7', label: 'Autonomous Operations' }
+    { value: 50, suffix: '+', label: 'Projects Delivered' },
+    { value: 15, suffix: '+', label: 'Industry Partners' },
+    { value: 99.5, suffix: '%', label: 'System Reliability' },
+    { value: 24, suffix: '/7', label: 'Autonomous Operations' }
   ];
 
   benefits = [
@@ -97,4 +97,54 @@ export class AppComponent {
         "The team's expertise in autonomous robotics exceeded our expectations."
     }
   ];
+
+  ngAfterViewInit(): void {
+    const reveals = document.querySelectorAll<HTMLElement>('[data-reveal]');
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.18 }
+    );
+
+    reveals.forEach((el) => observer.observe(el));
+
+    const counters = document.querySelectorAll<HTMLElement>('[data-counter]');
+    counters.forEach((counter) => this.animateCounter(counter));
+  }
+
+  private animateCounter(element: HTMLElement): void {
+    const target = Number(element.dataset['count'] || 0);
+    const suffix = element.dataset['suffix'] || '';
+    const decimals = Number(element.dataset['decimals'] || 0);
+    const duration = 1600;
+    const startTime = performance.now();
+
+    const update = (timestamp: number) => {
+      const progress = Math.min((timestamp - startTime) / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      const current = target * eased;
+
+      if (decimals > 0) {
+        element.textContent = current.toFixed(decimals) + suffix;
+      } else {
+        element.textContent = Math.floor(current).toString() + suffix;
+      }
+
+      if (progress < 1) {
+        requestAnimationFrame(update);
+      } else if (decimals > 0) {
+        element.textContent = target.toFixed(decimals) + suffix;
+      } else {
+        element.textContent = Math.floor(target).toString() + suffix;
+      }
+    };
+
+    requestAnimationFrame(update);
+  }
 }
