@@ -1,0 +1,169 @@
+<main class="page-shell">
+  <header class="site-header">
+    <div class="brand-wrap">
+      <span class="brand-mark">M</span>
+      <span class="brand-name">Moverbot</span>
+    </div>
+    <nav>
+      @for (item of navItems; track item) {
+        <a [href]="'#' + item.toLowerCase()">{{ item }}</a>
+      }
+    </nav>
+    <a class="nav-cta" href="#contact">Book a Demo</a>
+  </header>
+
+  <section class="hero" id="home">
+    <div class="hero-content">
+      <span class="eyebrow">MoverBot 2.0</span>
+      <h1>You shouldn't be pushing lawn mowers in 2026.</h1>
+      <p>
+        Autonomous navigation. Self-charging. Whisper-quiet. Safe around pets
+        and kids. Built to operate in any weather without asking for your
+        permission.
+      </p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#about">Meet the System</a>
+        <a class="btn btn-secondary" href="#contact">Project Launch June</a>
+      </div>
+      <ul class="hero-highlights">
+        <li>Self-Charging</li>
+        <li>Weather Ready</li>
+        <li>Quiet Operation</li>
+      </ul>
+    </div>
+    <div class="hero-visual">
+      <div class="visual-orb"></div>
+      <div class="robot-card">
+        <div class="robot-head"></div>
+        <div class="robot-body">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <div class="robot-wheel wheel-left"></div>
+        <div class="robot-wheel wheel-right"></div>
+        <div class="sensor sensor-1"></div>
+        <div class="sensor sensor-2"></div>
+      </div>
+      <div class="grid-overlay"></div>
+    </div>
+  </section>
+
+  <section class="about-section" id="about">
+    <div>
+      <span class="section-tag">About</span>
+      <h2>We built this because the old way was never good enough.</h2>
+    </div>
+    <p>
+      MoverBot 2.0 is a statement, not a brochure. We didn't license someone
+      else's tech or buy a kit. We built this from concept to circuit board,
+      because that's the only way to make something that actually belongs in
+      the future.
+    </p>
+  </section>
+
+  <section class="services-section" id="services">
+    <div class="section-heading">
+      <span class="section-tag">Capabilities</span>
+      <h2>Designed for real-world autonomy</h2>
+    </div>
+    <div class="service-grid">
+      @for (service of services; track service.title) {
+        <article class="service-card">
+          <div class="service-icon"></div>
+          <h3>{{ service.title }}</h3>
+          <p>{{ service.description }}</p>
+        </article>
+      }
+    </div>
+  </section>
+
+  <section class="tech-section" id="technology">
+    <div class="section-heading">
+      <span class="section-tag">Technology</span>
+      <h2>Intelligence under the hood</h2>
+    </div>
+    <div class="tech-grid">
+      @for (tech of technologies; track tech) {
+        <div class="tech-card">{{ tech }}</div>
+      }
+    </div>
+  </section>
+
+  <section class="projects-section" id="projects">
+    <div class="section-heading">
+      <span class="section-tag">Development</span>
+      <h2>No vaporware. Just engineering.</h2>
+    </div>
+    <div class="project-grid">
+      @for (project of projects; track project.name) {
+        <article class="project-card">
+          <div class="project-visual"></div>
+          <h3>{{ project.name }}</h3>
+          <p>{{ project.description }}</p>
+        </article>
+      }
+    </div>
+  </section>
+
+  <section class="stats-section">
+    <div class="stats-grid">
+      @for (stat of stats; track stat.label) {
+        <div class="stat-item">
+          <strong>{{ stat.value }}</strong>
+          <span>{{ stat.label }}</span>
+        </div>
+      }
+    </div>
+  </section>
+
+  <section class="benefits-section">
+    <div class="section-heading">
+      <span class="section-tag">Why Moverbot</span>
+      <h2>Built for the standard that comes next</h2>
+    </div>
+    <div class="benefit-list">
+      @for (benefit of benefits; track benefit) {
+        <div class="benefit-item">✓ {{ benefit }}</div>
+      }
+    </div>
+  </section>
+
+  <section class="testimonials-section">
+    <div class="section-heading">
+      <span class="section-tag">Vision</span>
+      <h2>What the future looks like</h2>
+    </div>
+    <div class="testimonial-grid">
+      @for (testimonial of testimonials; track testimonial.quote) {
+        <blockquote class="testimonial-card">
+          “{{ testimonial.quote }}”
+        </blockquote>
+      }
+    </div>
+  </section>
+
+  <section class="contact-section" id="contact">
+    <div>
+      <span class="section-tag">Contact</span>
+      <h2>Ready to rethink the yard?</h2>
+      <p>
+        Let's talk about what autonomous robotics can do for your home,
+        property, or next product line.
+      </p>
+    </div>
+    <form class="contact-form">
+      <input type="text" placeholder="Name" />
+      <input type="text" placeholder="Company" />
+      <input type="email" placeholder="Email" />
+      <textarea rows="5" placeholder="Project Details"></textarea>
+      <button type="submit">Send Inquiry</button>
+    </form>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <p>© 2026 Moverbot. Autonomous robotics for a smarter future.</p>
+</footer>
+
+<router-outlet />
