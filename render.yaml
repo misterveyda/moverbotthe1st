@@ -1,0 +1,8 @@
+services:
+  - type: static_site
+    name: moverbot
+    env: static
+    branch: main
+    buildCommand: cd moverbot && npm install && npm run build
+    publishPath: moverbot/dist/moverbot
+    plan: free
