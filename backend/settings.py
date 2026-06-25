@@ -25,7 +25,7 @@ SECRET_KEY = "django-insecure-@iu0%lwnjh(&6joc-mpz)5j2lydsm_9h-q@a3@-5xpzuwi8_#2
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "core",
 ]
 
 MIDDLEWARE = [
@@ -74,8 +75,12 @@ WSGI_APPLICATION = "backend.wsgi.application"
 
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": "moverbot_db",
+        "USER": "moverbot_user",
+        "PASSWORD": "moverbot_password",
+        "HOST": "localhost",
+        "PORT": "5432",
     }
 }
 

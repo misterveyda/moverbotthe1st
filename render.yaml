@@ -4,5 +4,5 @@ services:
     env: static
     branch: main
     buildCommand: cd moverbot && npm install && npm run build
-    publishPath: moverbot/dist/moverbot
+    publishPath: moverbot/dist/moverbot/browser
     plan: free
